@@ -1,0 +1,193 @@
+﻿
+> smartcart-ar@0.1.0 lint
+> eslint --max-warnings 0
+
+
+C:\Users\tinasio\smartcart-ar\app\dashboard\page.tsx
+   5:22  warning  'TrendingDown' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+  25:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\app\dashboard\page.tsx:25:5
+  23 |   useEffect(() => {
+  24 |     const savedCart = loadCartFromStorage();
+> 25 |     setCartItems(savedCart);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  26 |   }, []);
+  27 |
+  28 |   // Listen for cart changes in localStorage                                                                                          react-hooks/set-state-in-effect
+  45:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\app\dashboard\page.tsx:45:5
+  43 |     const cartProducts = products.filter((product) => cartItems.includes(product.id));
+  44 |     const analytics = calculateCartAnalytics(cartProducts);
+> 45 |     setCartAnalytics(analytics);
+     |     ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  46 |   }, [cartItems]);
+  47 |
+  48 |   const getFilteredData = () => {  react-hooks/set-state-in-effect
+  94:63  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+
+C:\Users\tinasio\smartcart-ar\components\FilterSidebar.tsx
+  3:10  warning  'ChevronDown' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\tinasio\smartcart-ar\components\Navbar.tsx
+  34:13  error  Parsing error: JSX element 'Link' has no corresponding closing tag
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\CartAnalyticsCharts.tsx
+   16:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\CartAnalyticsCharts.tsx:16:5
+  14 |
+  15 |   useEffect(() => {
+> 16 |     setIsMounted(true);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |   }, []);
+  18 |
+  19 |   // Most expensive products chart data  react-hooks/set-state-in-effect
+  149:38  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+  203:38  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+  256:36  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\CategoryInflationChart.tsx
+  14:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\CategoryInflationChart.tsx:14:5
+  12 |
+  13 |   useEffect(() => {
+> 14 |     setIsMounted(true);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  15 |   }, []);
+  16 |
+  17 |   const chartData = Object.entries(data).map(([category, inflation]) => ({  react-hooks/set-state-in-effect
+  58:32  warning  'name' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\InflationChart.tsx
+  15:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\InflationChart.tsx:15:5
+  13 |
+  14 |   useEffect(() => {
+> 15 |     setIsMounted(true);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  16 |   }, []);
+  17 |
+  18 |   const chartData = data.map(item => ({  react-hooks/set-state-in-effect
+  59:32  warning  'name' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\SmartCartIndexChart.tsx
+  20:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\components\dashboard\SmartCartIndexChart.tsx:20:5
+  18 |
+  19 |   useEffect(() => {
+> 20 |     setIsMounted(true);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  21 |   }, []);
+  22 |
+  23 |   const chartData = data.map(item => ({  react-hooks/set-state-in-effect
+  70:32  warning  'name' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+
+C:\Users\tinasio\smartcart-ar\data\cartAnalytics.ts
+   63:9   warning  'cheapestStore' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  156:31  error    Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+
+C:\Users\tinasio\smartcart-ar\data\products.ts
+  1:10  warning  'PriceEntry' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\tinasio\smartcart-ar\hooks\useCart.ts
+   5:17  warning  'formatCurrency' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  43:25  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-explicit-any
+  44:25  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-explicit-any
+  62:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\hooks\useCart.ts:62:7
+  60 |   useEffect(() => {
+  61 |     if (typeof window === 'undefined') {
+> 62 |       setIsReady(true);
+     |       ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  63 |       return;
+  64 |     }
+  65 |  react-hooks/set-state-in-effect
+
+C:\Users\tinasio\smartcart-ar\hooks\useSearch.ts
+  21:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\hooks\useSearch.ts:21:9
+  19 |       try {
+  20 |         const parsed = JSON.parse(saved);
+> 21 |         setRecentSearches(Array.isArray(parsed) ? parsed : []);
+     |         ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  22 |       } catch {
+  23 |         setRecentSearches([]);
+  24 |       }  react-hooks/set-state-in-effect
+  38:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\tinasio\smartcart-ar\hooks\useSearch.ts:38:7
+  36 |   useEffect(() => {
+  37 |     if (debouncedQuery.length === 0) {
+> 38 |       setIsLoading(false);
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  39 |       return;
+  40 |     }
+  41 |     setIsLoading(true);                                                    react-hooks/set-state-in-effect
+
+C:\Users\tinasio\smartcart-ar\lib\utils.ts
+  1:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Γ£û 26 problems (18 errors, 8 warnings)
+
+

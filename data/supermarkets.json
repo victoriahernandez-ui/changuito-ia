@@ -1,0 +1,831 @@
+{
+  "supermarkets": [
+    {
+      "id": 1,
+      "name": "Carrefour",
+      "displayName": "Carrefour",
+      "logo": "🛒",
+      "locations": 120,
+      "rating": 4.5,
+      "website": "www.carrefour.com.ar"
+    },
+    {
+      "id": 2,
+      "name": "Coto",
+      "displayName": "Coto",
+      "logo": "🛍️",
+      "locations": 138,
+      "rating": 4.6,
+      "website": "www.coto.com.ar"
+    },
+    {
+      "id": 3,
+      "name": "Día",
+      "displayName": "Día",
+      "logo": "🏬",
+      "locations": 300,
+      "rating": 4.1,
+      "website": "www.dia.com.ar"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Leche Descremada Sancor 1L",
+      "category": "Lácteos",
+      "description": "Leche descremada Sancor, 1 litro",
+      "prices": {
+        "Carrefour": {
+          "regular": 185.99,
+          "promotion": 165.99,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito Banco Provincia",
+            "discount": 15,
+            "finalPrice": 150.99
+          }
+        },
+        "Coto": {
+          "regular": 189.90,
+          "promotion": 169.90,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta de Crédito Coto",
+            "discount": 12,
+            "finalPrice": 157.90
+          }
+        },
+        "Día": {
+          "regular": 175.50,
+          "promotion": 158.95,
+          "promotionType": "Descuento 9%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 10,
+            "finalPrice": 148.95
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Pan Francés Artesanal",
+      "category": "Panadería",
+      "description": "Pan francés fresco, 500g",
+      "prices": {
+        "Carrefour": {
+          "regular": 95.00,
+          "promotion": 85.50,
+          "promotionType": "Precio especial",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 8,
+            "finalPrice": 78.66
+          }
+        },
+        "Coto": {
+          "regular": 98.50,
+          "promotion": 89.00,
+          "promotionType": "Promoción del día",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 10,
+            "finalPrice": 80.10
+          }
+        },
+        "Día": {
+          "regular": 88.00,
+          "promotion": 79.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 12,
+            "finalPrice": 69.70
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Huevos Frescos Docena",
+      "category": "Almacén",
+      "description": "Huevos frescos, docena",
+      "prices": {
+        "Carrefour": {
+          "regular": 245.00,
+          "promotion": 220.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito Banco Provincia",
+            "discount": 20,
+            "finalPrice": 200.50
+          }
+        },
+        "Coto": {
+          "regular": 258.00,
+          "promotion": 232.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 18,
+            "finalPrice": 214.20
+          }
+        },
+        "Día": {
+          "regular": 230.00,
+          "promotion": 207.00,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 22,
+            "finalPrice": 185.00
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "Queso Barra Sancor 400g",
+      "category": "Lácteos",
+      "description": "Queso barra Sancor, 400g",
+      "prices": {
+        "Carrefour": {
+          "regular": 485.50,
+          "promotion": 436.95,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito Banco Provincia",
+            "discount": 25,
+            "finalPrice": 411.95
+          }
+        },
+        "Coto": {
+          "regular": 498.90,
+          "promotion": 449.01,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 22,
+            "finalPrice": 427.01
+          }
+        },
+        "Día": {
+          "regular": 468.00,
+          "promotion": 421.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 30,
+            "finalPrice": 391.20
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "Pollo Pechuga kg",
+      "category": "Carnes",
+      "description": "Pechuga de pollo fresca, por kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 345.00,
+          "promotion": 310.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 30,
+            "finalPrice": 280.50
+          }
+        },
+        "Coto": {
+          "regular": 365.00,
+          "promotion": 328.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 28,
+            "finalPrice": 300.50
+          }
+        },
+        "Día": {
+          "regular": 325.00,
+          "promotion": 292.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 35,
+            "finalPrice": 257.50
+          }
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "Pasta Fideos Marolio 500g",
+      "category": "Almacén",
+      "description": "Fideos secos Marolio, 500g",
+      "prices": {
+        "Carrefour": {
+          "regular": 125.00,
+          "promotion": 112.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 12,
+            "finalPrice": 100.50
+          }
+        },
+        "Coto": {
+          "regular": 128.50,
+          "promotion": 115.65,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 10,
+            "finalPrice": 105.65
+          }
+        },
+        "Día": {
+          "regular": 118.00,
+          "promotion": 106.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 14,
+            "finalPrice": 92.20
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "Aceite Girasol Natura 1.5L",
+      "category": "Almacén",
+      "description": "Aceite de girasol Natura, 1.5 litros",
+      "prices": {
+        "Carrefour": {
+          "regular": 285.00,
+          "promotion": 256.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 25,
+            "finalPrice": 231.50
+          }
+        },
+        "Coto": {
+          "regular": 298.50,
+          "promotion": 268.65,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 22,
+            "finalPrice": 246.65
+          }
+        },
+        "Día": {
+          "regular": 272.00,
+          "promotion": 244.80,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 28,
+            "finalPrice": 216.80
+          }
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "Azúcar Ledesma 1kg",
+      "category": "Almacén",
+      "description": "Azúcar blanca Ledesma, 1kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 165.00,
+          "promotion": 148.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 15,
+            "finalPrice": 133.50
+          }
+        },
+        "Coto": {
+          "regular": 172.50,
+          "promotion": 155.25,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 12,
+            "finalPrice": 143.25
+          }
+        },
+        "Día": {
+          "regular": 155.00,
+          "promotion": 139.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 18,
+            "finalPrice": 121.50
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "name": "Arroz Gallo 1kg",
+      "category": "Almacén",
+      "description": "Arroz blanco Gallo, 1kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 198.00,
+          "promotion": 178.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 18,
+            "finalPrice": 160.20
+          }
+        },
+        "Coto": {
+          "regular": 208.50,
+          "promotion": 187.65,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 16,
+            "finalPrice": 171.65
+          }
+        },
+        "Día": {
+          "regular": 185.00,
+          "promotion": 166.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 20,
+            "finalPrice": 146.50
+          }
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "Manteca La Serenísima 200g",
+      "category": "Lácteos",
+      "description": "Manteca La Serenísima, 200g",
+      "prices": {
+        "Carrefour": {
+          "regular": 325.00,
+          "promotion": 292.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 30,
+            "finalPrice": 262.50
+          }
+        },
+        "Coto": {
+          "regular": 345.00,
+          "promotion": 310.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 28,
+            "finalPrice": 282.50
+          }
+        },
+        "Día": {
+          "regular": 305.00,
+          "promotion": 274.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 35,
+            "finalPrice": 239.50
+          }
+        }
+      }
+    },
+    {
+      "id": 11,
+      "name": "Yogur Activia Natural 125g",
+      "category": "Lácteos",
+      "description": "Yogur Activia natural, 125g",
+      "prices": {
+        "Carrefour": {
+          "regular": 95.00,
+          "promotion": 85.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 8,
+            "finalPrice": 77.50
+          }
+        },
+        "Coto": {
+          "regular": 102.50,
+          "promotion": 92.25,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 7,
+            "finalPrice": 85.25
+          }
+        },
+        "Día": {
+          "regular": 88.00,
+          "promotion": 79.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 10,
+            "finalPrice": 69.20
+          }
+        }
+      }
+    },
+    {
+      "id": 12,
+      "name": "Jugo Naranja Baggio 1L",
+      "category": "Bebidas",
+      "description": "Jugo de naranja Baggio, 1L",
+      "prices": {
+        "Carrefour": {
+          "regular": 145.00,
+          "promotion": 130.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 13,
+            "finalPrice": 117.50
+          }
+        },
+        "Coto": {
+          "regular": 158.50,
+          "promotion": 142.65,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 12,
+            "finalPrice": 130.65
+          }
+        },
+        "Día": {
+          "regular": 135.00,
+          "promotion": 121.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 15,
+            "finalPrice": 106.50
+          }
+        }
+      }
+    },
+    {
+      "id": 13,
+      "name": "Agua Mineral Villavicencio 2L",
+      "category": "Bebidas",
+      "description": "Agua mineral Villavicencio, 2L",
+      "prices": {
+        "Carrefour": {
+          "regular": 65.00,
+          "promotion": 58.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 5,
+            "finalPrice": 53.50
+          }
+        },
+        "Coto": {
+          "regular": 72.50,
+          "promotion": 65.25,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 5,
+            "finalPrice": 60.25
+          }
+        },
+        "Día": {
+          "regular": 58.00,
+          "promotion": 52.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 6,
+            "finalPrice": 46.20
+          }
+        }
+      }
+    },
+    {
+      "id": 14,
+      "name": "Galletas Biscuit La Salada 200g",
+      "category": "Almacén",
+      "description": "Galletas La Salada, 200g",
+      "prices": {
+        "Carrefour": {
+          "regular": 125.00,
+          "promotion": 112.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 11,
+            "finalPrice": 101.50
+          }
+        },
+        "Coto": {
+          "regular": 135.00,
+          "promotion": 121.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 10,
+            "finalPrice": 111.50
+          }
+        },
+        "Día": {
+          "regular": 118.00,
+          "promotion": 106.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 12,
+            "finalPrice": 94.20
+          }
+        }
+      }
+    },
+    {
+      "id": 15,
+      "name": "Carne de Res Nalga kg",
+      "category": "Carnes",
+      "description": "Nalga de vaca fresca, por kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 485.00,
+          "promotion": 436.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 45,
+            "finalPrice": 391.50
+          }
+        },
+        "Coto": {
+          "regular": 525.00,
+          "promotion": 472.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 42,
+            "finalPrice": 430.50
+          }
+        },
+        "Día": {
+          "regular": 455.00,
+          "promotion": 409.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 50,
+            "finalPrice": 359.50
+          }
+        }
+      }
+    },
+    {
+      "id": 16,
+      "name": "Tomate Fresco kg",
+      "category": "Verduras",
+      "description": "Tomate fresco de estación, por kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 145.00,
+          "promotion": 130.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 13,
+            "finalPrice": 117.50
+          }
+        },
+        "Coto": {
+          "regular": 158.50,
+          "promotion": 142.65,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 12,
+            "finalPrice": 130.65
+          }
+        },
+        "Día": {
+          "regular": 128.00,
+          "promotion": 115.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 15,
+            "finalPrice": 100.20
+          }
+        }
+      }
+    },
+    {
+      "id": 17,
+      "name": "Lechuga Crespa Unidad",
+      "category": "Verduras",
+      "description": "Lechuga crespa fresca, por unidad",
+      "prices": {
+        "Carrefour": {
+          "regular": 85.00,
+          "promotion": 76.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 7,
+            "finalPrice": 69.50
+          }
+        },
+        "Coto": {
+          "regular": 95.00,
+          "promotion": 85.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 8,
+            "finalPrice": 77.50
+          }
+        },
+        "Día": {
+          "regular": 75.00,
+          "promotion": 67.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 8,
+            "finalPrice": 59.50
+          }
+        }
+      }
+    },
+    {
+      "id": 18,
+      "name": "Papa Blanca kg",
+      "category": "Verduras",
+      "description": "Papas blancas frescas, por kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 95.00,
+          "promotion": 85.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 8,
+            "finalPrice": 77.50
+          }
+        },
+        "Coto": {
+          "regular": 105.00,
+          "promotion": 94.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 9,
+            "finalPrice": 85.50
+          }
+        },
+        "Día": {
+          "regular": 85.00,
+          "promotion": 76.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 10,
+            "finalPrice": 66.50
+          }
+        }
+      }
+    },
+    {
+      "id": 19,
+      "name": "Cebolla Morada kg",
+      "category": "Verduras",
+      "description": "Cebolla morada fresca, por kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 78.00,
+          "promotion": 70.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 7,
+            "finalPrice": 63.20
+          }
+        },
+        "Coto": {
+          "regular": 88.00,
+          "promotion": 79.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 7,
+            "finalPrice": 72.20
+          }
+        },
+        "Día": {
+          "regular": 68.00,
+          "promotion": 61.20,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 8,
+            "finalPrice": 53.20
+          }
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "Ajo kg",
+      "category": "Verduras",
+      "description": "Ajo fresco, por kg",
+      "prices": {
+        "Carrefour": {
+          "regular": 145.00,
+          "promotion": 130.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 13,
+            "finalPrice": 117.50
+          }
+        },
+        "Coto": {
+          "regular": 165.00,
+          "promotion": 148.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 13,
+            "finalPrice": 135.50
+          }
+        },
+        "Día": {
+          "regular": 125.00,
+          "promotion": 112.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 15,
+            "finalPrice": 97.50
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "name": "Café Lácteo 250g",
+      "category": "Almacén",
+      "description": "Café molido Lácteo, 250g",
+      "prices": {
+        "Carrefour": {
+          "regular": 285.00,
+          "promotion": 256.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Débito",
+            "discount": 25,
+            "finalPrice": 231.50
+          }
+        },
+        "Coto": {
+          "regular": 315.00,
+          "promotion": 283.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Tarjeta Coto",
+            "discount": 25,
+            "finalPrice": 258.50
+          }
+        },
+        "Día": {
+          "regular": 265.00,
+          "promotion": 238.50,
+          "promotionType": "Descuento 10%",
+          "paymentDiscount": {
+            "method": "Efectivo",
+            "discount": 30,
+            "finalPrice": 208.50
+          }
+        }
+      }
+    }
+  ]
+}
