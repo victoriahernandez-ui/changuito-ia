@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ShoppingBag, Star, Users, ShieldCheck, Sparkles, TrendingUp } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -14,22 +14,24 @@ import CartSummary from '@/components/CartSummary';
 import CartDrawer from '@/components/CartDrawer';
 import ProductCard from '@/components/ProductCard';
 import StatsSection from '@/components/StatsSection';
-import { bankPromotions } from '@/data/bankPromotions';
+import { bankPromotions, type BankPromotion } from '@/data/bankPromotions';
 import { products } from '@/data/products';
 import { useCart } from '@/hooks/useCart';
 import { useFilters, defaultFilters } from '@/hooks/useFilters';
 import { useSearch } from '@/hooks/useSearch';
-import { useProductSearch } from '@/lib/pricing/hooks';
+import { searchOpenFoodFacts } from '@/lib/pricing/adapters/openfoodfacts-adapter';
 
 export default function LandingPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
- 
+  const [apiProducts, setApiProducts] = useState<any[]>([]);
+  const [livePromotions, setLivePromotions] = useState<BankPromotion[]>(bankPromotions);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const {
     query,
     setQuery,
     filteredProducts: searchResults,
-    isLoading,
     recentSearches,
     popularQueries,
     suggestionSections,
@@ -37,6 +39,53 @@ export default function LandingPage() {
     pickSuggestion,
     debouncedQuery,
   } = useSearch(products);
+
+  useEffect(() => {
+    const fetchPromotions = async () => {
+      try {
+        const response = await fetch('/api/bank-promotions');
+        if (!response.ok) return;
+
+        const data = await response.json();
+        if (Array.isArray(data.promotions)) {
+          setLivePromotions(data.promotions);
+        }
+      } catch (promotionError) {
+        console.error('Promotions API error:', promotionError);
+      }
+    };
+
+    fetchPromotions();
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const trimmedQuery = debouncedQuery.trim();
+
+      if (trimmedQuery.length < 3) {
+        setApiProducts([]);
+        setError(null);
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const results = await searchOpenFoodFacts(trimmedQuery);
+        setApiProducts(results);
+      } catch (fetchError) {
+        console.error('API error:', fetchError);
+        setApiProducts([]);
+        setError('Error fetching products');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [debouncedQuery]);
 
   const {
     filters,
@@ -59,8 +108,9 @@ export default function LandingPage() {
     clearCart,
   } = useCart(products);
 
-  const sectionTitle = query ? `Resultados para “${debouncedQuery}”` : 'Catálogo recomendado';
-  const hasResults = filteredProducts.length > 0;
+  const sectionTitle = debouncedQuery ? `Resultados para “${debouncedQuery}”` : 'Catálogo recomendado';
+  const productsToRender = apiProducts.length > 0 ? apiProducts : filteredProducts;
+  const hasResults = productsToRender.length > 0;
 
   const handleRemoveFilter = (type: keyof typeof filters, value: string | boolean) => {
     switch (type) {
@@ -117,6 +167,7 @@ export default function LandingPage() {
         <HeroSection />
 
         <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div id="products-search" className="scroll-mt-28" />
           <div className="flex flex-col gap-8 xl:flex-row xl:items-end xl:justify-between">
             <div className="space-y-4">
               <p className="text-sm uppercase tracking-[0.3em] text-slate-500 font-semibold">Comparador Inteligente</p>
@@ -186,7 +237,7 @@ export default function LandingPage() {
                 <EmptyState query={debouncedQuery} />
               ) : (
                 <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {filteredProducts.map((product) => {
+                  {(apiProducts.length > 0 ? apiProducts : filteredProducts).map((product) => {
                     const sortedPrices = [...product.prices].sort((a, b) => a.price - b.price);
                     const cheapest = sortedPrices[0];
 
@@ -209,7 +260,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <CartSummary cartLines={cartLines} cartProducts={cartProducts} promotions={bankPromotions} />
+        <CartSummary cartLines={cartLines} cartProducts={cartProducts} promotions={livePromotions} />
 
         <StatsSection
           statistics={[

@@ -4,9 +4,9 @@ import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { TrendingUp, BarChart3, PieChart, Activity, Calendar, ShoppingCart, ArrowLeft } from 'lucide-react';
 import Navbar from "@/components/Navbar";
-import { inflationData, smartCartIndex } from '@/data/inflationData';
+import { inflationData, smartCartIndex, type InflationData } from '@/data/inflationData';
 import { products } from '@/data/products';
-import { calculateCartAnalytics, loadCartFromStorage, CartAnalytics } from '@/data/cartAnalytics';
+import { calculateCartAnalytics, loadCartFromStorage } from '@/data/cartAnalytics';
 import InflationChart from '@/components/dashboard/InflationChart';
 import CategoryInflationChart from '@/components/dashboard/CategoryInflationChart';
 import TopIncreasesList from '@/components/dashboard/TopIncreasesList';
@@ -15,8 +15,12 @@ import InflationStats from '@/components/dashboard/InflationStats';
 import CartAnalyticsCharts from '@/components/dashboard/CartAnalyticsCharts';
 
 export default function DashboardPage() {
-  const [selectedPeriod, setSelectedPeriod] = useState<'3M' | '6M' | '12M'>('12M');
+  type Period = '3M' | '6M' | '12M';
+
+  const [selectedPeriod, setSelectedPeriod] = useState<Period>('12M');
   const [cartItems, setCartItems] = useState<number[]>(() => loadCartFromStorage());
+  const [liveInflationData, setLiveInflationData] = useState<InflationData[]>(inflationData);
+  const [liveSmartCartIndex, setLiveSmartCartIndex] = useState(smartCartIndex);
 
   const cartAnalytics = useMemo(() => {
     const cartProducts = products.filter((product) => cartItems.includes(product.id));
@@ -36,9 +40,37 @@ export default function DashboardPage() {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
+  useEffect(() => {
+    const fetchInflation = async () => {
+      try {
+        const response = await fetch('/api/inflation?months=12');
+        if (!response.ok) return;
+
+        const payload = await response.json();
+
+        if (Array.isArray(payload.data)) {
+          setLiveInflationData(payload.data);
+        }
+
+        if (Array.isArray(payload.smartCartIndex)) {
+          setLiveSmartCartIndex(
+            payload.smartCartIndex.map((item: { month: string; index: number; date: string }) => ({
+              ...item,
+              date: new Date(item.date),
+            }))
+          );
+        }
+      } catch (inflationError) {
+        console.error('Inflation API error:', inflationError);
+      }
+    };
+
+    fetchInflation();
+  }, []);
+
   const getFilteredData = () => {
     const months = selectedPeriod === '3M' ? 3 : selectedPeriod === '6M' ? 6 : 12;
-    return inflationData.slice(-months);
+    return liveInflationData.slice(-months);
   };
 
   const filteredData = getFilteredData();
@@ -75,19 +107,18 @@ export default function DashboardPage() {
               {/* Period Selector */}
               <div className="flex flex-col gap-4 items-center justify-between md:flex-row md:items-center mt-8">
                 <div className="flex gap-2">
-                  {[
+                  {([
                     { key: '3M', label: '3 Meses' },
                     { key: '6M', label: '6 Meses' },
                     { key: '12M', label: '12 Meses' }
-                  ].map(({ key, label }) => (
+                  ] satisfies Array<{ key: Period; label: string }>).map(({ key, label }) => (
                     <button
                       key={key}
-                      onClick={() => setSelectedPeriod(key as any)}
-                      className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                        selectedPeriod === key
+                      onClick={() => setSelectedPeriod(key)}
+                      className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedPeriod === key
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
                           : 'bg-white/60 backdrop-blur-xl text-slate-700 hover:bg-white/80 border border-white/40'
-                      }`}
+                        }`}
                     >
                       {label}
                     </button>
@@ -134,7 +165,7 @@ export default function DashboardPage() {
                   <Activity className="w-6 h-6 text-green-600" />
                   <h3 className="text-2xl font-bold text-slate-900">Índice Changuito IA</h3>
                 </div>
-                <SmartCartIndexChart data={smartCartIndex.slice(-filteredData.length)} />
+                <SmartCartIndexChart data={liveSmartCartIndex.slice(-filteredData.length)} />
               </div>
             </div>
 
@@ -183,7 +214,9 @@ export default function DashboardPage() {
           </section>
         )}
 
-        {/* Footer */}
+        
+      </main>
+      {/* Footer */}
         <footer className="bg-white/40 backdrop-blur-xl border-t border-white/20 py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 text-slate-600">
@@ -192,7 +225,6 @@ export default function DashboardPage() {
             </div>
           </div>
         </footer>
-      </main>
     </>
   );
 }

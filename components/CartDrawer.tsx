@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, ShoppingBag, X } from 'lucide-react';
+import { ShoppingBag, X } from 'lucide-react';
 import { Product } from '@/types/product';
 import CartItem from '@/components/CartItem';
 import { formatCurrency } from '@/lib/utils';
@@ -99,13 +99,6 @@ export default function CartDrawer({
                 className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition"
               >
                 Vaciar carrito
-              </button>
-              <button
-                type="button"
-                className="w-full rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition flex items-center justify-center gap-2"
-              >
-                Ir a pagar
-                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>

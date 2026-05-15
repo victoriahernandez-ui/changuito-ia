@@ -26,7 +26,7 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
-                href="/dashboard"
+                href="/#products-search"
                 className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-3.5 rounded-lg font-semibold transition duration-300 ease-out shadow-lg hover:shadow-xl"
               >
                 <Zap className="w-5 h-5" />

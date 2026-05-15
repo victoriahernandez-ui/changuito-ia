@@ -51,7 +51,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="/dashboard"
+            href="/#products-search"
             className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded-lg font-medium transition duration-300 ease-out"
           >
             Comenzar
