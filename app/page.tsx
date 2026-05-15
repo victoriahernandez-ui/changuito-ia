@@ -19,9 +19,11 @@ import { products } from '@/data/products';
 import { useCart } from '@/hooks/useCart';
 import { useFilters, defaultFilters } from '@/hooks/useFilters';
 import { useSearch } from '@/hooks/useSearch';
+import { useProductSearch } from '@/lib/pricing/hooks';
 
 export default function LandingPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+ 
 
   const {
     query,

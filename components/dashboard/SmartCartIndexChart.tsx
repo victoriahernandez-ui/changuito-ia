@@ -34,8 +34,8 @@ export default function SmartCartIndexChart({ data }: SmartCartIndexChartProps) 
   }
 
   return (
-    <div className="h-80">
-      <ResponsiveContainer width="100%" aspect={2} minWidth={0}>
+    <div className="w-full h-[300px]">
+  <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={chartData}>
           <defs>
             <linearGradient id="indexGradient" x1="0" y1="0" x2="0" y2="1">

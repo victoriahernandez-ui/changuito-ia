@@ -116,8 +116,8 @@ export default function CartAnalyticsCharts({ analytics }: CartAnalyticsChartsPr
             <DollarSign className="w-6 h-6 text-red-600" />
             <h3 className="text-2xl font-bold text-slate-900">Productos Más Caros</h3>
           </div>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" aspect={2} minWidth={0}>
+          <div className="w-full h-[300px]">
+  <ResponsiveContainer width="100%" height="100%">
               <BarChart data={expensiveProductsData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.5} />
                 <XAxis
@@ -173,8 +173,8 @@ export default function CartAnalyticsCharts({ analytics }: CartAnalyticsChartsPr
             <Store className="w-6 h-6 text-green-600" />
             <h3 className="text-2xl font-bold text-slate-900">Supermercados Más Baratos</h3>
           </div>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" aspect={2} minWidth={0}>
+          <div className="w-full h-[300px]">
+  <ResponsiveContainer width="100%" height="100%">
               <BarChart data={supermarketData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.5} />
                 <XAxis
@@ -226,8 +226,8 @@ export default function CartAnalyticsCharts({ analytics }: CartAnalyticsChartsPr
         <p className="text-slate-600 mb-6">
           Proyección del costo de tu carrito actual con la inflación promedio del {analytics.averageCartInflation.toFixed(1)}% mensual
         </p>
-        <div className="h-80">
-          <ResponsiveContainer width="100%" aspect={2} minWidth={0}>
+        <div className="w-full h-[300px]">
+  <ResponsiveContainer width="100%" height="100%">
             <LineChart data={spendingData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.5} />
               <XAxis

@@ -18,8 +18,8 @@ export default function InflationChart({ data }: InflationChartProps) {
   }));
 
   return (
-    <div className="h-80">
-      <ResponsiveContainer width="100%" aspect={2} minWidth={0}>
+    <div className="w-full h-[300px]">
+  <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.5} />
           <XAxis
